@@ -1,0 +1,78 @@
+:root 
+{
+    --main--color:#000000;
+}
+
+.option-box h4
+{
+  margin-top: -70px;
+  /* margin: 20px; */
+  color:#666;
+  font-size: 30px;
+  text-align: center;
+
+}
+.option-box .colors-list
+{
+   list-style:none ;
+   text-align: center;
+   padding:0;
+   margin: -13px 17px 32px 15px;
+}
+.option-box .colors-list li
+{
+  width: 24px;
+  height: 24px;
+  background-color: rgba(22, 20, 22, 0.082);
+  cursor: pointer;
+  display: inline-block;
+  border:0;
+  
+}
+.option-box .colors-list li.active
+{
+    border:2px solid rgb(126, 118, 120);
+    margin:0px;
+    /* margin:5px 0 ; */
+}
+.option-box .colors-list li:first-child
+{
+    background-color:#000000;
+    border-radius:20px;
+    /* margin: 19px 4px; */
+
+}
+.option-box .colors-list li:nth-child(2)
+{
+    background-color:#e91e63;
+    border-radius:20px
+
+}
+.option-box .colors-list li:nth-child(3)
+{
+    background-color:#c54ac5;
+    border-radius:20px
+
+}
+.option-box .colors-list li:nth-child(4)
+{
+    background-color:#676776;
+    border-radius:20px
+
+}
+.option-box .colors-list li:nth-child(5)
+{
+    background-color:#279cca;
+    border-radius:20px
+
+}
+.title
+{
+    text-align: center;
+    background-color:var(--main--color) ;
+    margin-top: -16px;
+    margin-bottom: 10px;
+    font-size: 25px;
+    font-weight: 900;
+    color: #6a6a6a;
+}
