@@ -1,59 +1,74 @@
-import React from 'react';
+import React from "react";
 
 const Form = (props) => {
-  
-    React.useEffect(() => {
-       
-        //make focus on input
+  const [input1, setInput1] = React.useState("");
+  const [input1Done, setInput1Done] = React.useState(false);
+  const [input2, setInput2] = React.useState("");
 
-       window.onload = (e) =>{
-        e.preventDefault()
-           document.getElementById('input').focus();
-       }
-
-       onclick = () =>{
-        document.getElementById('input2').focus();
+  React.useEffect(() => {
+    //make focus on input
+    if (!input1Done) {
+      window.onload = (e) => {
+        e.preventDefault();
+        document.getElementById("input1").focus();
+      };
+    } else if (input1Done) {
+      onclick = () => {
+        document.getElementById("input2").focus();
+      };
+      //when onclick makr focus on 2input
     }
-       //when onclick makr focus on 2input  
+  }, [input1Done]);
+  const handleSubmit1 = (e) => {
+    e.preventDefault();
+    console.log("fff");
+    setInput1Done(!input1Done);
+  };
 
-     }
-    );        
-        return (
-        <form onSubmit={props.nemProps}>
-                <input 
-                    id="input"
-                    type="text"
-                    name="city"
-                    placeholder='Enter your City..'
-                />
-                <input
-                    id='input2'
-                    type="text"
-                    name="country"
-                    placeholder="Enter your Country.."
-                />
-                <button>
-                    Get Weather
-                </button>
-                
+  const handleSubmit2 = (e) => {
+    e.preventDefault();
+    const info = {
+      input1,
+      input2,
+    };
+    props.nemProps(e, info);
+  };
+  return (
+    <>
+      <form onSubmit={handleSubmit1}>
+        <input
+          id="input1"
+          type="text"
+          name="city"
+          placeholder="Enter your City.."
+          value={input1}
+          onChange={(e) => {
+            setInput1(e.target.value);
+          }}
+          disabled={input1Done}
+        />
+        <button type="submit">Enter City</button>
+      </form>
+
+      {input1Done && (
+        <form onSubmit={handleSubmit2}>
+          <input
+            id="input2"
+            type="text"
+            name="country"
+            placeholder="Enter your Country.."
+            value={input2}
+            onChange={(e) => setInput2(e.target.value)}
+          />
+          <button id="input2" type="submit">
+            Get Weather
+          </button>
         </form>
-   )
+      )}
+    </>
+  );
 };
 export default Form;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // react-dom.development.js:14169 Uncaught Error: Form(...): Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null.
 //     at reconcileChildFibers (react-dom.development.js:14169)
@@ -72,9 +87,3 @@ export default Form;
 // console.<computed> @ index.js:1
 // handleErrors @ webpackHotDevClient.js:174
 // push../node_modules/react-dev-utils/webpackHotDevClient.js.connection.onmessage @ webpackHotDevClient.js:213
-
-
-
-
-
-
